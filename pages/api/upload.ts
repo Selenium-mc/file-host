@@ -45,5 +45,3 @@ export default function uploadFormFiles(req, res) {
     res.json({ error: e })
   }
 }
-
-export {}
