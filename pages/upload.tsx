@@ -30,7 +30,7 @@ export default function Upload() {
     return (
         <div {...getRootProps()} className={styles.uploadBox}>
             <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p>Drag &apos;n&apos; drop some files here, or click to select files</p>
         </div>
     )
 }
