@@ -1,5 +1,5 @@
 import { Container, } from '@chakra-ui/layout';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/index.module.css';
 
 export default function Index() {
   return (
