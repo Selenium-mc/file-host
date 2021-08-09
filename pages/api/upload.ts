@@ -28,7 +28,8 @@ export default function uploadFormFiles(req, res) {
           new Date().toISOString() +
           '-' +
           Math.random().toString(36).substr(2, 5)
-        fs.writeFileSync(`public/files/${date}-${file.name}`, "")
+        let finalFilePath = `public/files/${date}-${file.name}`; 
+        fs.writeFileSync(finalFilePath, data)
         fs.unlinkSync(file.path)
         paths = [...paths, `/files/${date}-${file.name}`]
       })
