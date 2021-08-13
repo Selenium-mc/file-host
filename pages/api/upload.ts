@@ -3,8 +3,15 @@ import Formidable from 'formidable';
 import fs from 'fs';
 import { exception } from 'console';
 import dotenv from 'dotenv';
+import { v2 as cloudinary } from 'cloudinary';
 
 dotenv.config();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
 
 export const config = {
   api: {
@@ -31,12 +38,14 @@ export default function uploadFormFiles(req, res) {
           new Date().toISOString() +
           '-' +
           Math.random().toString(36).substr(2, 5)
-          
-        let finalFilePath = `public/files/${date}-${file.name}`; 
+
+        let finalFilePath = `public/files/${date}-${file.name}`;
         console.log(finalFilePath);
 
         fs.writeFileSync(finalFilePath, data)
+        cloudinary.uploader.upload(finalFilePath, (error, result) => console.log(error, result));
         fs.unlinkSync(file.path)
+
         paths = [...paths, `/files/${date}-${file.name}`]
       })
         .on('aborted', () => {
