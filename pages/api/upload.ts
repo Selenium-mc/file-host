@@ -2,6 +2,9 @@ import { File } from 'formidable';
 import Formidable from 'formidable';
 import fs from 'fs';
 import { exception } from 'console';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const config = {
   api: {
